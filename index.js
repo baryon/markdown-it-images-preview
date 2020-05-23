@@ -20,6 +20,9 @@ module.exports = function(md, config){
             md.__image = {}
         delete md.__image[src];
     }
+    md.image_clear = function(){
+      delete  md.__image
+    }
     var imagedefault = md.renderer.rules.image;
     md.renderer.rules.image = function(tokens, idx, options, env, slf){
         var _attrs = tokens[idx].attrs;
