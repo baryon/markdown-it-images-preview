@@ -28,9 +28,10 @@ module.exports = function(md, config){
         var _attrs = tokens[idx].attrs;
         if(md.__image instanceof Object){
             for(var i = 0;i < _attrs.length;i++){
-                if(_attrs[i][0] == 'src' && md.__image.hasOwnProperty(tokens[idx].attrs[i][1])){
+              var fileName = decodeURI(tokens[idx].attrs[i][1]);
+              if(_attrs[i][0] == 'src' && md.__image.hasOwnProperty(fileName)){
                     _attrs.push(['rel', _attrs[i][1]]);
-                    _attrs[i][1] = md.__image[tokens[idx].attrs[i][1]]
+                    _attrs[i][1] = md.__image[fileName];
                     break;
                 }
             }
